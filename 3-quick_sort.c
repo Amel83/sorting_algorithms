@@ -16,6 +16,7 @@ void quick_sort(int *array, size_t size)
 /**
  * quick_sort_recursive - Helper function for Quick sort.
  * @array: Pointer to the array to be sorted.
+ * @size: size of array
  * @low: Starting index of the partition to be sorted.
  * @high: Ending index of the partition to be sorted.
  */
@@ -33,6 +34,7 @@ void quick_sort_recursive(int *array, int low, int high, size_t size)
 /**
  * lomuto_partition - Lomuto partition scheme for Quick sort.
  * @array: Pointer to the array to be partitioned.
+ * @size: size of array
  * @low: Starting index of the partition to be sorted.
  * @high: Ending index of the partition to be sorted.
  * Return: Index of the pivot element after partition.
