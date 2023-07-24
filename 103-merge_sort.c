@@ -10,7 +10,8 @@
  * @size_left: Size of the left sub-array.
  * @size_right: Size of the right sub-array.
  */
-void merge(int *array, int *left, int *right, size_t size_left, size_t size_right)
+void merge(int *array, int *left, int *right,
+		size_t size_left, size_t size_right)
 {
 	size_t i = 0, j = 0, k = 0;
 	int *tmp = malloc((size_left + size_right) * sizeof(int));
