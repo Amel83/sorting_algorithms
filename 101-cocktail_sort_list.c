@@ -79,7 +79,7 @@ void cocktail_sort_list(listint_t **list)
 				h = var->next;
 			}
 			i--;
-			head = h->prev;
+			h = h->prev;
 		}
 	}
 }
