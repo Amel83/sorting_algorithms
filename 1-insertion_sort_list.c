@@ -17,7 +17,7 @@ void insertion_sort_list(listint_t **list)
 
 	while (p)
 	{
-		while (p->next && (pr->n > p->next->n))
+		while (p->next && (p->n > p->next->n))
 		{
 			temp = p->next;
 			p->next = temp->next;
@@ -32,7 +32,7 @@ void insertion_sort_list(listint_t **list)
 			p->prev = temp;
 			temp->next = p;
 
-			if (t->prev)
+			if (temp->prev)
 				p = temp->prev;
 			else
 				*list = temp;
