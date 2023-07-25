@@ -18,8 +18,8 @@ void quick_sort(int *array, size_t size)
  * quick_sort_recursive - Helper function.
  * @array: Pointer to the array.
  * @size: size
- * @low: Starting index of the partition to be sorted.
- * @high: Ending index of the partition.
+ * @lw: Starting index of the partition to be sorted.
+ * @hg: Ending index of the partition.
  */
 void quick_sort_recursive(int *array, int lw, int hg, size_t size)
 {
