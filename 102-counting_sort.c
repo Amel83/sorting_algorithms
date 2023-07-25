@@ -3,50 +3,50 @@
 #include "sort.h"
 
 /**
- * counting_sort - Sorts an array of integers in ascending order using the
- *                 Counting Sort algorithm.
- * @array: Pointer to the array of integers.
+ * counting_sort - Sorts an array.
+ * @array: Pointer to the array.
  * @size: Size of the array.
  */
+
 void counting_sort(int *array, size_t size)
 {
-	int i, max = 0;
-	int *count_array = NULL, *output = NULL;
+	int j, max = 0;
+	int *count_array = NULL, *b = NULL;
 
 	if (array == NULL || size <= 1)
 		return;
-	for (i = 0; i < (int)size; i++)
+	for (j = 0; j < (int)size; j++)
 	{
-		if (array[i] > max)
-			max = array[i];
+		if (array[j] > max)
+			max = array[j];
 	}
 	count_array = calloc((max + 1), sizeof(int));
 	if (count_array == NULL)
 		return;
-	for (i = 0; i <= max; i++)
-		count_array[i] = 0;
-	for (i = 0; i < (int)size; i++)
-		count_array[array[i]]++;
-	for (i = 1; i <= max; i++)
+	for (j = 0; j <= max; j++)
+		count_array[j] = 0;
+	for (j = 0; j < (int)size; j++)
+		count_array[array[j]]++;
+	for (j = 1; j <= max; j++)
 	{
-		count_array[i] += count_array[i - 1];
+		count_array[j] += count_array[j - 1];
 	}
 	print_array(count_array, max + 1);
-	output = malloc(size * sizeof(int));
-	if (output == NULL)
+	b = malloc(size * sizeof(int));
+	if (b == NULL)
 	{
 		free(count_array);
 		return;
 	}
-	for (i = size - 1; i >= 0; i--)
+	for (j = size - 1;j >= 0; j--)
 	{
-		count_array[array[i]]--;
-		output[count_array[array[i]]] = array[i];
+		count_array[array[j]]--;
+		b[count_array[array[j]]] = array[j];
 	}
-	for (i = 0; i < (int)size; i++)
+	for (j = 0; j < (int)size; j++)
 	{
-		array[i] = output[i];
+		array[j] = b[j];
 	}
 	free(count_array);
-	free(output);
+	free(b);
 }

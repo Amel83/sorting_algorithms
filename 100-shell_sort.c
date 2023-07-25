@@ -3,13 +3,14 @@
 
 /**
  * shell_sort - Sorts in shell.
- * @array: Pointer to the array to be sorted.
- * @size: Size of the array.
+ * @array: Pointer to the array.
+ * @size: Size.
  */
+
 void shell_sort(int *array, size_t size)
 {
-	size_t gap, i, j;
-	int temp;
+	size_t gap, i, k;
+	int j;
 
 	if (array == NULL || size < 2)
 		return;
@@ -20,14 +21,14 @@ void shell_sort(int *array, size_t size)
 	{
 		for (i = gap; i < size; i++)
 		{
-			temp = array[i];
-			j = i;
-			while (j >= gap && array[j - gap] > temp)
+			j = array[i];
+			k = i;
+			while (k >= gap && array[k - gap] > j)
 			{
-				array[j] = array[j - gap];
-				j -= gap;
+				array[k] = array[k - gap];
+				k -= gap;
 			}
-			array[j] = temp;
+			array[k] = j;
 		}
 		print_array(array, size);
 		gap = (gap - 1) / 3;

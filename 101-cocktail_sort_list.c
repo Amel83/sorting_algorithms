@@ -36,53 +36,50 @@ void _swap(listint_t **node, listint_t **list)
 
 }
 /**
- * cocktail_sort_list - function that sorts a doubly linked list
- * of integers in ascending order using the Cocktail shaker sort algorithm
- *
- * @list: head of list to be sortered (Double Linked List)
- *
- * Return: No Return
+ * cocktail_sort_list - function that sorts
+ * @list: head of list
  */
+
 void cocktail_sort_list(listint_t **list)
 {
-	listint_t *head, *aux;
-	int c = 0, n = -1, m = -1;
+	listint_t *h, *var;
+	int i = 0, n = -1, m = -1;
 
 	if (!list || !(*list) || (!((*list)->prev) && !((*list)->next)))
 		return;
 
-	head = *list;
+	h = *list;
 	while (m >= n)
 	{
 		n++;
-		while (head->next && c != m)
+		while (head->next && i != m)
 		{
-			if (head->n > head->next->n)
+			if (h->n > h->next->n)
 			{
-				aux = head;
-			       _swap(&aux, list);
+				var = h;
+			       _swap(&var, list);
 			       print_list(*list);
-			       head = aux;
+			       h = var;
 			}
 
-			c++;
-			head = head->next;
+			i++;
+			h = h->next;
 		}
 
 		if (n == 0)
-			m = c;
+			m = i;
 		m--;
-		while (head->prev && c >= n)
+		while (h->prev && i >= n)
 		{
-			if (head->n < head->prev->n)
+			if (h->n < h->prev->n)
 			{
-				aux = head->prev;
-				_swap(&aux, list);
+				var = h->prev;
+				_swap(&var, list);
 				print_list(*list);
-				head = aux->next;
+				h = var->next;
 			}
-			c--;
-			head = head->prev;
+			i--;
+			head = h->prev;
 		}
 	}
 }

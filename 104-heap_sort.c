@@ -4,58 +4,56 @@
 
 /**
  * sift_down - Perform the sift-down operation to maintain the heap property.
- */
-void sift_down(int *array, size_t size, size_t start, size_t end)
+ * @array: pointer
+ * @size: size of pointer
+ * @start:starting
+ * @end: ending 
+ **/
+
+void _down(int *array, size_t size, size_t start, size_t end)
 {
 	int temp;
-    size_t child, swap, root = start;
+	size_t c, swap, root = start;
 
-    while ((2 * root + 1) <= end) {
-        child = 2 * root + 1;
-        swap = root;
-
-        if (array[swap] < array[child])
-            swap = child;
-
-        if (child + 1 <= end && array[swap] < array[child + 1])
-            swap = child + 1;
-
-        if (swap == root)
-            return;
-
-        temp = array[root];
-        array[root] = array[swap];
-        array[swap] = temp;
-
-        print_array(array, size);
-
-        root = swap;
-    }
+	while ((2 * root + 1) <= end)
+	{
+		c = 2 * root + 1;
+		swap = root;
+		if (array[swap] < array[c])
+			swap = c;
+		if (c + 1 <= end && array[swap] < array[c + 1])
+			swap = c + 1;
+		if (swap == root)
+			return;
+		temp = array[root];
+		array[root] = array[swap];
+			array[swap] = temp;
+			print_array(array, size);
+			root = swap;
+	}
 }
 
 /**
- * heap_sort - Sorts an array of integers in ascending order using the
- *             Heap sort algorithm.
+ * heap_sort - Heap sort algorithm.
+ * @array: pointer
+ * @size: size
  */
+
 void heap_sort(int *array, size_t size)
 {
-	int i, temp;
-    if (array == NULL || size <= 1)
-        return;
+	int j, ptr;
 
-    /* Build max heap */
-    for (i = size / 2 - 1; i >= 0; i--)
-        sift_down(array, size, i, size - 1);
-
-    /* Heap sort */
-    for (i = size - 1; i > 0; i--) {
-        temp = array[0];
-        array[0] = array[i];
-        array[i] = temp;
-
-        print_array(array, size);
-
-        sift_down(array, size, 0, i - 1);
-    }
+	if (array == NULL || size <= 1)
+		return;
+	for (j = size / 2 - 1; j >= 0; j--)
+		_down(array, size, j, size - 1);
+	for (j = size - 1; j > 0; j--)
+	{
+		ptr = array[0];
+		array[0] = array[j];
+		array[j] = ptr;
+		print_array(array, size);
+		sift_down(array, size, 0, j - 1);
+	}
 }
 
