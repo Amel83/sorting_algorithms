@@ -52,7 +52,7 @@ void cocktail_sort_list(listint_t **list)
 	while (m >= n)
 	{
 		n++;
-		while (head->next && i != m)
+		while (h->next && i != m)
 		{
 			if (h->n > h->next->n)
 			{
