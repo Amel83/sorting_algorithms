@@ -53,7 +53,7 @@ void heap_sort(int *array, size_t size)
 		array[0] = array[j];
 		array[j] = ptr;
 		print_array(array, size);
-		sift_down(array, size, 0, j - 1);
+		_down(array, size, 0, j - 1);
 	}
 }
 
