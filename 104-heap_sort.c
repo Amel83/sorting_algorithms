@@ -3,11 +3,11 @@
 #include "sort.h"
 
 /**
- * sift_down - Perform the sift-down operation to maintain the heap property.
+ * _down - Perform the sift-down operation to maintain the heap property.
  * @array: pointer
  * @size: size of pointer
  * @start:starting
- * @end: ending 
+ * @end: ending
  **/
 
 void _down(int *array, size_t size, size_t start, size_t end)
